@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMS · Portfolio & Strategy</title>
+<meta name="description" content="Personal portfolio of an ambitious South African accounting student, startup founder, and strategist building toward CA(SA).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --c1:#0a0a0f;
+  --c2:#111118;
+  --c3:#1a1a26;
+  --accent:#e8c547;
+  --accent2:#4fc08d;
+  --accent3:#7c6af7;
+  --text:#f0eee8;
+  --muted:#8a8a9a;
+  --border:rgba(255,255,255,0.08);
+  --card:rgba(255,255,255,0.04);
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--c1);
+  color:var(--text);
+  font-size:15px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+.syne{font-family:'Syne',sans-serif;}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,10,15,0.94);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:58px;
+}
+.nav-logo{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--accent);letter-spacing:-0.5px;cursor:pointer;}
+.nav-links{display:flex;gap:2px;flex-wrap:wrap;}
+.nav-links button{
+  background:none;border:none;color:var(--muted);
+  font-family:'DM Sans',sans-serif;font-size:13px;
+  padding:6px 13px;border-radius:6px;cursor:pointer;
+  transition:all 0.2s;letter-spacing:0.01em;
+}
+.nav-links button:hover{background:var(--card);color:var(--text);}
+.nav-links button.active{background:rgba(232,197,71,0.1);color:var(--accent);}
+
+/* hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--muted);border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{
+  display:none;position:fixed;top:58px;left:0;right:0;z-index:99;
+  background:rgba(10,10,15,0.98);border-bottom:1px solid var(--border);
+  padding:1rem 2rem;flex-direction:column;gap:4px;
+}
+.mobile-menu button{
+  background:none;border:none;color:var(--muted);font-family:'DM Sans',sans-serif;
+  font-size:15px;padding:10px 0;cursor:pointer;text-align:left;border-bottom:1px solid var(--border);
+  transition:color 0.2s;
+}
+.mobile-menu button:last-child{border:none;}
+.mobile-menu button.active,.mobile-menu button:hover{color:var(--accent);}
+.mobile-menu.open{display:flex;}
+
+/* ── SECTIONS ── */
+section{display:none;padding:2.5rem 2rem;max-width:920px;margin:0 auto;}
+section.active{display:block;animation:fadeUp 0.35s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── HERO ── */
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(232,197,71,0.1);border:1px solid rgba(232,197,71,0.25);
+  border-radius:100px;padding:6px 16px;font-size:12px;color:var(--accent);
+  margin-bottom:2rem;letter-spacing:0.05em;text-transform:uppercase;font-weight:500;
+}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+h1.hero-title{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2rem,6vw,3.8rem);
+  font-weight:800;line-height:1.08;letter-spacing:-1.5px;
+  margin-bottom:1.5rem;
+}
+h1.hero-title .line2{color:var(--accent);}
+.hero-sub{font-size:16px;color:var(--muted);max-width:560px;margin-bottom:2.5rem;line-height:1.85;}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);border-radius:14px;overflow:hidden;
+  margin-bottom:3rem;border:1px solid var(--border);
+}
+.stat{background:var(--c2);padding:1.4rem;}
+.stat-n{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;color:var(--accent);}
+.stat-l{font-size:12px;color:var(--muted);margin-top:4px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{border:none;padding:12px 26px;border-radius:9px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.btn-primary{background:var(--accent);color:#0a0a0f;}
+.btn-primary:hover{background:#f0d060;transform:translateY(-2px);}
+.btn-secondary{background:var(--card);border:1px solid var(--border);color:var(--text);}
+.btn-secondary:hover{background:rgba(255,255,255,0.08);transform:translateY(-1px);}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:2.5rem;}
+.tag{background:var(--card);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:12px;color:var(--muted);}
+
+/* ── COMMON ── */
+.divider{height:1px;background:var(--border);margin:2.5rem 0;}
+.section-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:1.25rem;font-weight:500;}
+h2.sec-h{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;margin-bottom:0.75rem;letter-spacing:-0.5px;}
+h3.card-h{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:0.5rem;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:1.5rem;margin-bottom:1rem;}
+.card-accent{border-left:3px solid var(--accent);}
+.card-green{border-left:3px solid var(--accent2);}
+.card-purple{border-left:3px solid var(--accent3);}
+.card-red{border-left:3px solid #ef4444;}
+.card-blue{border-left:3px solid #60a5fa;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+
+/* ── PROGRESS ── */
+.progress-wrap{margin:0.75rem 0;}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:5px;}
+.progress-track{height:4px;background:rgba(255,255,255,0.07);border-radius:100px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:100px;}
+.p-yellow{background:var(--accent);}
+.p-green{background:var(--accent2);}
+.p-purple{background:var(--accent3);}
+.p-blue{background:#60a5fa;}
+
+/* ── TIMETABLE ── */
+.timetable{width:100%;border-collapse:collapse;font-size:13px;}
+.timetable th{font-family:'Syne',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);font-weight:500;padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;}
+.timetable td{padding:9px 12px;border-bottom:1px solid rgba(255,255,255,0.035);vertical-align:middle;}
+.timetable tr:hover td{background:rgba(255,255,255,0.02);}
+.pill{display:inline-block;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:500;}
+.pill-y{background:rgba(232,197,71,0.15);color:var(--accent);}
+.pill-g{background:rgba(79,192,141,0.15);color:var(--accent2);}
+.pill-p{background:rgba(124,106,247,0.15);color:var(--accent3);}
+.pill-r{background:rgba(239,68,68,0.15);color:#ef4444;}
+.pill-b{background:rgba(96,165,250,0.15);color:#60a5fa;}
+
+/* ── ROADMAP ── */
+.roadmap-item{display:flex;gap:1rem;margin-bottom:1.5rem;}
+.roadmap-line{display:flex;flex-direction:column;align-items:center;}
+.roadmap-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:6px;}
+.roadmap-dot.future{background:var(--muted);}
+.roadmap-connector{width:1px;background:var(--border);flex:1;margin-top:6px;min-height:36px;}
+.roadmap-content{flex:1;padding-bottom:1rem;}
+.roadmap-time{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;}
+
+/* ── MODULES ── */
+.mod-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;}
+.mod-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;}
+.mod-code{font-size:11px;color:var(--accent);margin-bottom:4px;font-weight:600;letter-spacing:0.04em;}
+.mod-name{font-size:13px;font-weight:500;color:var(--text);}
+.mod-hours{font-size:11px;color:var(--muted);margin-top:6px;}
+
+/* ── CHECKLIST ── */
+.checklist{list-style:none;}
+.checklist li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:14px;}
+.checklist li:last-child{border:none;}
+.check-icon{width:18px;height:18px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;margin-top:2px;}
+.check-done{background:rgba(79,192,141,0.2);color:var(--accent2);}
+.check-todo{background:rgba(255,255,255,0.06);color:var(--muted);border:1px solid var(--border);}
+.check-urgent{background:rgba(239,68,68,0.15);color:#ef4444;}
+
+/* ── ALERT ── */
+.alert{border-radius:10px;padding:1rem 1.25rem;margin-bottom:1rem;display:flex;gap:12px;align-items:flex-start;}
+.alert-warn{background:rgba(232,197,71,0.08);border:1px solid rgba(232,197,71,0.2);}
+.alert-info{background:rgba(79,192,141,0.08);border:1px solid rgba(79,192,141,0.2);}
+.alert-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.alert-text{font-size:13px;line-height:1.7;}
+.alert-text strong{color:var(--accent);}
+
+/* ── DAILY SCHEDULE ── */
+.day-block{display:flex;gap:1rem;margin-bottom:6px;align-items:flex-start;}
+.time-badge{min-width:100px;text-align:right;font-size:12px;color:var(--muted);font-weight:500;padding-top:11px;flex-shrink:0;}
+.day-content{flex:1;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:13px;}
+.day-content strong{color:var(--text);}
+
+/* ── INFO ROW ── */
+.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;}
+.info-row:last-child{border:none;}
+.info-row .label{color:var(--muted);}
+.info-row .val{color:var(--text);font-weight:500;text-align:right;max-width:60%;}
+
+/* ── FOCUS ── */
+.focus-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.focus-card{border-radius:11px;padding:1.25rem;}
+.focus-now{background:rgba(232,197,71,0.06);border:1px solid rgba(232,197,71,0.2);}
+.focus-later{background:rgba(255,255,255,0.03);border:1px solid var(--border);}
+.focus-card h4{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.06em;}
+.focus-now h4{color:var(--accent);}
+.focus-later h4{color:var(--muted);}
+.focus-list{list-style:none;}
+.focus-list li{font-size:13px;padding:4px 0;color:var(--text);}
+.focus-list li::before{content:"→ ";color:var(--accent);}
+.focus-later .focus-list li{color:var(--muted);}
+.focus-later .focus-list li::before{color:var(--muted);content:"— ";}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:3rem 2rem;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:2rem;}
+footer a{color:var(--accent);text-decoration:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  nav .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero-stats{grid-template-columns:1fr;}
+  .grid-2,.grid-3,.mod-grid,.focus-grid{grid-template-columns:1fr;}
+  .time-badge{min-width:80px;font-size:11px;}
+  section{padding:2rem 1.25rem;}
+  nav{padding:0 1.25rem;}
+}
+@media(max-width:400px){
+  h1.hero-title{font-size:1.9rem;}
+  .timetable{font-size:11px;}
+  .timetable th,.timetable td{padding:7px 8px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo syne" onclick="show('home')">SMS</div>
+  <div class="nav-links" id="desktopNav">
+    <button class="active" onclick="show('home',this)">Home</button>
+    <button onclick="show('about',this)">About</button>
+    <button onclick="show('goals',this)">Goals</button>
+    <button onclick="show('projects',this)">Projects</button>
+    <button onclick="show('academic',this)">Academic</button>
+    <button onclick="show('system',this)">System</button>
+    <button onclick="show('strategy',this)">Strategy</button>
+  </div>
+  <button class="hamburger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="active" onclick="show('home',this);toggleMenu()">Home</button>
+  <button onclick="show('about',this);toggleMenu()">About</button>
+  <button onclick="show('goals',this);toggleMenu()">Goals</button>
+  <button onclick="show('projects',this);toggleMenu()">Projects</button>
+  <button onclick="show('academic',this);toggleMenu()">Academic</button>
+  <button onclick="show('system',this);toggleMenu()">System</button>
+  <button onclick="show('strategy',this);toggleMenu()">Strategy</button>
+</div>
+
+<!-- ═══════════════ HOME ═══════════════ -->
+<section id="home" class="active">
+  <div style="padding-top:2rem;">
+    <div class="hero-badge"><span class="dot"></span>&nbsp; Open to opportunities &nbsp;·&nbsp; Durban, SA</div>
+    <h1 class="hero-title">
+      Building the future.<br>
+      <span class="line2">One system at a time.</span>
+    </h1>
+    <p class="hero-sub">Accounting student. Startup founder. Strategist. I don't wait for the right moment — I build the infrastructure for it.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">5</div><div class="stat-l">Active Modules</div></div>
+      <div class="stat"><div class="stat-n">2</div><div class="stat-l">Ventures Running</div></div>
+      <div class="stat"><div class="stat-n">CA(SA)</div><div class="stat-l">End Goal</div></div>
+    </div>
+    <div class="hero-ctas">
+      <button class="btn btn-primary" onclick="show('projects')">View My Projects</button>
+      <button class="btn btn-secondary" onclick="show('system')">My Execution System</button>
+    </div>
+    <div class="hero-tags">
+      <span class="tag">Accounting Science</span>
+      <span class="tag">UNISA</span>
+      <span class="tag">P2P Marketplace</span>
+      <span class="tag">Money Lending</span>
+      <span class="tag">CA(SA) Track</span>
+      <span class="tag">Durban</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-label">What I'm running right now</div>
+  <div class="grid-2">
+    <div class="card card-accent">
+      <h3 class="card-h">📚 Academic Sprint</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem;">UNISA Higher Certificate · 5 modules · May/June exams</p>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Semester Progress</span><span>35%</span></div>
+        <div class="progress-track"><div class="progress-fill p-yellow" style="width:35%"></div></div>
+      </div>
+    </div>
+    <div class="card card-green">
+      <h3 class="card-h">🚀 P2P Marketplace</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem;">South African asset rental platform · MVP phase</p>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>MVP Build</span><span>20%</span></div>
+        <div class="progress-track"><div class="progress-fill p-green" style="width:20%"></div></div>
+      </div>
+    </div>
+    <div class="card card-purple">
+      <h3 class="card-h">💰 Lending Business</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem;">Active operation · building systems to scale</p>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Systems Built</span><span>50%</span></div>
+        <div class="progress-track"><div class="progress-fill p-purple" style="width:50%"></div></div>
+      </div>
+    </div>
+    <div class="card card-blue">
+      <h3 class="card-h">🔍 Job Search</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem;">Active · targeting finance &amp; operations roles</p>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Applications Active</span><span>Rolling</span></div>
+        <div class="progress-track"><div class="progress-fill p-blue" style="width:40%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-label">The vision</div>
+  <div class="card" style="background:linear-gradient(135deg,rgba(232,197,71,0.05),rgba(124,106,247,0.05));border-color:rgba(232,197,71,0.2);">
+    <p style="font-size:15px;line-height:1.95;color:var(--text);">
+      I'm building toward a future where I'm a <strong style="color:var(--accent)">Chartered Accountant</strong> who understands markets from the inside — because I built one. My peer-to-peer marketplace will redefine how South Africans share and monetize their assets. My financial discipline is being forged right now, through study, real capital deployment, and relentless execution.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about">
+  <div class="section-label">Who I am</div>
+  <h2 class="sec-h">A builder with a long game.</h2>
+  <p style="color:var(--muted);margin-bottom:2rem;">I operate at the intersection of finance, entrepreneurship, and strategy — not because it's easy, but because that's where the most interesting problems live.</p>
+
+  <div class="grid-2" style="margin-bottom:2rem;">
+    <div>
+      <div class="section-label">Currently studying</div>
+      <div class="info-row"><span class="label">Programme</span><span class="val">Higher Cert · Accounting Science</span></div>
+      <div class="info-row"><span class="label">Institution</span><span class="val">UNISA</span></div>
+      <div class="info-row"><span class="label">Next step</span><span class="val">BCom Accounting</span></div>
+      <div class="info-row"><span class="label">End goal</span><span class="val">CA(SA)</span></div>
+      <div class="info-row"><span class="label">Location</span><span class="val">Durban, KwaZulu-Natal</span></div>
+    </div>
+    <div>
+      <div class="section-label">Running simultaneously</div>
+      <div class="info-row"><span class="label">Venture 1</span><span class="val">P2P Asset Marketplace</span></div>
+      <div class="info-row"><span class="label">Venture 2</span><span class="val">Money Lending Business</span></div>
+      <div class="info-row"><span class="label">Training</span><span class="val">TVET Business Management</span></div>
+      <div class="info-row"><span class="label">Status</span><span class="val" style="color:var(--accent2);">Actively job searching</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-label">Core operating principles</div>
+  <div class="grid-3">
+    <div class="card" style="text-align:center;padding:1.5rem 1rem;">
+      <div style="font-size:1.4rem;margin-bottom:0.6rem;">⚡</div>
+      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:6px;">Execute First</div>
+      <div style="font-size:12px;color:var(--muted);">Strategy without action is fiction. I move fast and adjust in real time.</div>
+    </div>
+    <div class="card" style="text-align:center;padding:1.5rem 1rem;">
+      <div style="font-size:1.4rem;margin-bottom:0.6rem;">🎯</div>
+      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:6px;">Systems Over Willpower</div>
+      <div style="font-size:12px;color:var(--muted);">I build structures that work even when motivation doesn't show up.</div>
+    </div>
+    <div class="card" style="text-align:center;padding:1.5rem 1rem;">
+      <div style="font-size:1.4rem;margin-bottom:0.6rem;">📈</div>
+      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:6px;">Long-Game Thinking</div>
+      <div style="font-size:12px;color:var(--muted);">Every hard decision now buys compounding returns later. I play for 10 years.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-label">What I'm looking for</div>
+  <div class="card card-accent">
+    <p style="font-size:14px;line-height:1.9;">I'm actively seeking <strong style="color:var(--accent)">employment opportunities</strong> in finance, accounting, operations, or business administration — roles where I can add immediate value while building toward CA(SA). I bring financial literacy, entrepreneurial thinking, and a work ethic forged under pressure. If you're hiring or know someone who is, I want to talk.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ GOALS ═══════════════ -->
+<section id="goals">
+  <div class="section-label">Structured ambition</div>
+  <h2 class="sec-h">Goals with deadlines, not wishes.</h2>
+
+  <div class="alert alert-warn">
+    <div class="alert-icon">⚠️</div>
+    <div class="alert-text"><strong>URGENT:</strong> TVET Business Management logbook must be completed before month-end. Blocking 2 hours per day until done — this is the single highest-priority task this week.</div>
+  </div>
+
+  <div class="section-label" style="margin-top:1.5rem;">Short-term (Now → June 2025)</div>
+  <ul class="checklist">
+    <li><div class="check-icon check-urgent">!</div><div><strong>Complete TVET logbook</strong> — before month-end. 2 hours/day blocked until finished.</div></li>
+    <li><div class="check-icon check-todo">○</div><div><strong>Pass all 5 UNISA modules</strong> — CAS1501, ENG1504, FAC1501, MNB1501, BNU1501</div></li>
+    <li><div class="check-icon check-todo">○</div><div><strong>Secure employment</strong> — 5 targeted applications per week, track all follow-ups</div></li>
+    <li><div class="check-icon check-todo">○</div><div><strong>Submit all assignments on time</strong> — use calendar system, zero late penalties</div></li>
+    <li><div class="check-icon check-todo">○</div><div><strong>Validate P2P marketplace concept</strong> — 10 host conversations + 10 guest interviews before building anything</div></li>
+  </ul>
+
+  <div class="divider"></div>
+  <div class="section-label">Medium-term (6–18 months)</div>
+  <ul class="checklist">
+    <li><div class="check-icon check-todo">○</div><div><strong>Enroll in BCom Accounting at UNISA</strong> — begin after Higher Certificate completion</div></li>
+    <li><div class="check-icon check-todo">○</div><div><strong>Launch P2P marketplace MVP</strong> — one city, one asset category, real transactions processing</div></li>
+    <li><div class="check-icon check-todo">○</div><div><strong>Scale lending business</strong> — implement credit scoring system, grow loan book safely at 20%/quarter</div></li>
+    <li><div class="check-icon check-todo">○</div><div><strong>Begin SAICA training contract preparation</strong> — research audit firms and traineeship requirements</div></li>
+    <li><div class="check-icon check-todo">○</div><div><strong>Build financial skills stack</strong> — Excel advanced, Power BI basics, Python for financial analysis</div></li>
+  </ul>
+
+  <div class="divider"></div>
+  <div class="section-label">Long-term (3–10 years)</div>
+  <ul class="checklist">
+    <li><div class="check-icon check-todo">○</div><div><strong>Complete BCom Accounting</strong> — maintain 60%+ average throughout</div></li>
+    <li><div class="check-icon check-todo">○</div><div><strong>Complete 3-year SAICA training contract</strong> — preferably Big 4 or national audit firm</div></li>
+    <li><div class="check-icon check-todo">○</div><div><strong>Pass ITC and APC board exams</strong> — become a registered CA(SA)</div></li>
+    <li><div class="check-icon check-todo">○</div><div><strong>Scale P2P marketplace nationally</strong> — multiple cities, multiple asset categories, SADC region</div></li>
+    <li><div class="check-icon check-todo">○</div><div><strong>Build a regulated financial services operation</strong> — leveraging CA(SA) and lending track record</div></li>
+  </ul>
+</section>
+
+<!-- ═══════════════ PROJECTS ═══════════════ -->
+<section id="projects">
+  <div class="section-label">What I'm building</div>
+  <h2 class="sec-h">Two bets. Both strategic.</h2>
+
+  <!-- P2P -->
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:1.25rem;">
+    <div style="width:44px;height:44px;border-radius:10px;background:rgba(232,197,71,0.1);border:1px solid rgba(232,197,71,0.25);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🔗</div>
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;">South African P2P Asset Marketplace</div>
+      <div style="font-size:12px;color:var(--muted);">Venture #1 · Validation Phase · Durban-first</div>
+    </div>
+  </div>
+
+  <div class="card card-accent" style="margin-bottom:0.75rem;">
+    <h3 class="card-h">The Opportunity</h3>
+    <p style="font-size:13px;color:var(--muted);line-height:1.85;">South Africa has millions of underutilized assets — vehicles, tools, equipment, spaces, electronics — sitting idle while people who need them can't afford to buy them. I'm building the infrastructure to connect asset owners (Hosts) with people who need temporary access (Guests), creating income for owners and access for everyone else. Think Airbnb, but for everything.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:0.75rem;">
+    <div class="card">
+      <h3 class="card-h" style="color:var(--accent2);">For Hosts (Asset Owners)</h3>
+      <ul style="font-size:13px;color:var(--muted);padding-left:1.2rem;line-height:2.1;">
+        <li>List any asset: vehicle, tool, space, equipment</li>
+        <li>Set your own price and availability</li>
+        <li>Earn passive income from idle assets</li>
+        <li>Protected by transaction insurance</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="card-h" style="color:var(--accent3);">For Guests (Renters)</h3>
+      <ul style="font-size:13px;color:var(--muted);padding-left:1.2rem;line-height:2.1;">
+        <li>Access what you need, when you need it</li>
+        <li>No long-term commitment or ownership cost</li>
+        <li>Verified listings and secure payments</li>
+        <li>Affordable short-term rental rates</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:1.25rem;">
+    <h3 class="card-h">Business Model</h3>
+    <div class="info-row"><span class="label">Revenue model</span><span class="val">Commission per transaction (8–15%)</span></div>
+    <div class="info-row"><span class="label">Strategy</span><span class="val">Vertical-first, then horizontal expansion</span></div>
+    <div class="info-row"><span class="label">Launch market</span><span class="val">Durban → eThekwini metro</span></div>
+    <div class="info-row"><span class="label">National expansion</span><span class="val">12–24 months post-launch</span></div>
+    <div class="info-row"><span class="label">Regional expansion</span><span class="val">SADC region (long term)</span></div>
+  </div>
+
+  <div class="section-label">Roadmap</div>
+  <div class="roadmap-item">
+    <div class="roadmap-line"><div class="roadmap-dot"></div><div class="roadmap-connector"></div></div>
+    <div class="roadmap-content">
+      <div class="roadmap-time">Now — Month 3</div>
+      <h4 class="card-h" style="font-size:0.9rem;">Validation &amp; Customer Research</h4>
+      <p style="font-size:13px;color:var(--muted);">Interview 20 potential hosts + guests. Define the first vertical (likely vehicles or tools). Validate willingness to pay. No code yet — conversations only.</p>
+    </div>
+  </div>
+  <div class="roadmap-item">
+    <div class="roadmap-line"><div class="roadmap-dot future"></div><div class="roadmap-connector"></div></div>
+    <div class="roadmap-content">
+      <div class="roadmap-time">Month 3–6</div>
+      <h4 class="card-h" style="font-size:0.9rem;">MVP Build</h4>
+      <p style="font-size:13px;color:var(--muted);">Simple listing + booking + payment system. 50 active hosts in Durban. First real transactions. Prove the core loop works.</p>
+    </div>
+  </div>
+  <div class="roadmap-item">
+    <div class="roadmap-line"><div class="roadmap-dot future"></div><div class="roadmap-connector"></div></div>
+    <div class="roadmap-content">
+      <div class="roadmap-time">Month 6–12</div>
+      <h4 class="card-h" style="font-size:0.9rem;">Traction &amp; Trust-Building</h4>
+      <p style="font-size:13px;color:var(--muted);">Build review system, insurance partnerships, host success team. Expand to 200+ active hosts. Prove unit economics and GMV growth.</p>
+    </div>
+  </div>
+  <div class="roadmap-item">
+    <div class="roadmap-line"><div class="roadmap-dot future"></div></div>
+    <div class="roadmap-content">
+      <div class="roadmap-time">Month 12–24</div>
+      <h4 class="card-h" style="font-size:0.9rem;">National Expansion</h4>
+      <p style="font-size:13px;color:var(--muted);">Cape Town and Johannesburg. Add new asset verticals. Explore B2B partnerships with fleet owners and equipment companies.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- LENDING -->
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:1.25rem;">
+    <div style="width:44px;height:44px;border-radius:10px;background:rgba(124,106,247,0.1);border:1px solid rgba(124,106,247,0.25);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">💰</div>
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;">Money Lending Business</div>
+      <div style="font-size:12px;color:var(--muted);">Venture #2 · Active Operations · Scaling Carefully</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:0.75rem;">
+    <div class="card card-purple">
+      <h3 class="card-h">Growth Strategy</h3>
+      <ul style="font-size:13px;color:var(--muted);padding-left:1.2rem;line-height:2.1;">
+        <li>Reinvest profits to grow the loan book</li>
+        <li>Build a referral network for borrowers</li>
+        <li>Document every single transaction</li>
+        <li>Track ROI and default rate per cohort</li>
+      </ul>
+    </div>
+    <div class="card card-purple">
+      <h3 class="card-h">Risk Management</h3>
+      <ul style="font-size:13px;color:var(--muted);padding-left:1.2rem;line-height:2.1;">
+        <li>Never lend more than 20% to one borrower</li>
+        <li>Require references or collateral</li>
+        <li>Use written agreements on every loan</li>
+        <li>Maintain a 3-month operating cash reserve</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="card-h">Scaling Path</h3>
+    <div class="info-row"><span class="label">Phase 1 (Now)</span><span class="val">Tighten processes. Document everything.</span></div>
+    <div class="info-row"><span class="label">Phase 2 (6–12 mo)</span><span class="val">Build credit scoring system. Grow referrals.</span></div>
+    <div class="info-row"><span class="label">Phase 3 (1–2 yr)</span><span class="val">Explore NCR registration. Formalize operations.</span></div>
+    <div class="info-row"><span class="label">Long term</span><span class="val">Micro-lending fintech or strategic partnership</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════ ACADEMIC ═══════════════ -->
+<section id="academic">
+  <div class="section-label">The foundation of everything</div>
+  <h2 class="sec-h">Academic Journey → CA(SA)</h2>
+
+  <div class="alert alert-info">
+    <div class="alert-icon">🎓</div>
+    <div class="alert-text">Preparing for <strong style="color:var(--accent2);">May/June 2025 exams</strong>. Assignments and module tests are live. The study system is non-negotiable.</div>
+  </div>
+
+  <div class="section-label" style="margin-top:1.5rem;">Current modules (2025 S1)</div>
+  <div class="mod-grid" style="margin-bottom:2rem;">
+    <div class="mod-card" style="border-left:3px solid var(--accent);">
+      <div class="mod-code">FAC1501-26-S1</div>
+      <div class="mod-name">Introduction to Financial Accounting</div>
+      <div class="mod-hours">8 hrs/week · Highest priority</div>
+    </div>
+    <div class="mod-card" style="border-left:3px solid #60a5fa;">
+      <div class="mod-code">BNU1501-26-S1</div>
+      <div class="mod-name">Business Numeracy</div>
+      <div class="mod-hours">5 hrs/week · High priority</div>
+    </div>
+    <div class="mod-card" style="border-left:3px solid var(--accent2);">
+      <div class="mod-code">CAS1501-26-S1</div>
+      <div class="mod-name">Computer Skills in Accounting Science</div>
+      <div class="mod-hours">6 hrs/week · High priority</div>
+    </div>
+    <div class="mod-card" style="border-left:3px solid var(--accent3);">
+      <div class="mod-code">MNB1501-26-S1</div>
+      <div class="mod-name">Introduction to Business Management</div>
+      <div class="mod-hours">5 hrs/week · Medium priority</div>
+    </div>
+    <div class="mod-card" style="border-left:3px solid #f472b6;grid-column:span 2;">
+      <div class="mod-code">ENG1504-26-S1</div>
+      <div class="mod-name">English for Academic Purposes</div>
+      <div class="mod-hours">4 hrs/week · Maintain consistently — foundational for all other modules</div>
+    </div>
+  </div>
+
+  <div class="section-label">CA(SA) full career roadmap</div>
+  <div class="roadmap-item">
+    <div class="roadmap-line"><div class="roadmap-dot"></div><div class="roadmap-connector"></div></div>
+    <div class="roadmap-content">
+      <div class="roadmap-time">Now · 2025</div>
+      <h4 class="card-h" style="font-size:0.9rem;">Higher Certificate in Accounting Science · UNISA</h4>
+      <p style="font-size:13px;color:var(--muted);">Complete all 5 modules. Pass May/June exams. Lay the foundation for BCom entry. This is the gateway.</p>
+    </div>
+  </div>
+  <div class="roadmap-item">
+    <div class="roadmap-line"><div class="roadmap-dot future"></div><div class="roadmap-connector"></div></div>
+    <div class="roadmap-content">
+      <div class="roadmap-time">2026–2028</div>
+      <h4 class="card-h" style="font-size:0.9rem;">BCom Accounting · UNISA</h4>
+      <p style="font-size:13px;color:var(--muted);">Core: accounting, tax, auditing, management accounting, business law. Maintain 60%+ average. Build Excel, Power BI, and data analysis skills in parallel.</p>
+    </div>
+  </div>
+  <div class="roadmap-item">
+    <div class="roadmap-line"><div class="roadmap-dot future"></div><div class="roadmap-connector"></div></div>
+    <div class="roadmap-content">
+      <div class="roadmap-time">2029–2031</div>
+      <h4 class="card-h" style="font-size:0.9rem;">SAICA Training Contract (3 years)</h4>
+      <p style="font-size:13px;color:var(--muted);">Join SAICA-accredited training employer — Big 4 or national audit firm. Apply financial knowledge in real audits, transactions, and client engagements.</p>
+    </div>
+  </div>
+  <div class="roadmap-item">
+    <div class="roadmap-line"><div class="roadmap-dot future"></div></div>
+    <div class="roadmap-content">
+      <div class="roadmap-time">2032 onwards</div>
+      <h4 class="card-h" style="font-size:0.9rem;">ITC + APC Board Exams → CA(SA)</h4>
+      <p style="font-size:13px;color:var(--muted);">Pass both board exams. Register with SAICA. Use CA(SA) designation to lead ventures, take CFO roles, or launch an advisory practice.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-label">Skills to build now (before they matter)</div>
+  <div class="grid-3">
+    <div class="card" style="padding:1rem;">
+      <div style="font-size:12px;color:var(--accent);margin-bottom:6px;font-weight:600;">Finance Tools</div>
+      <div style="font-size:13px;color:var(--muted);">Excel advanced · Google Sheets · Power BI basics</div>
+    </div>
+    <div class="card" style="padding:1rem;">
+      <div style="font-size:12px;color:var(--accent2);margin-bottom:6px;font-weight:600;">Data Literacy</div>
+      <div style="font-size:13px;color:var(--muted);">Python basics · financial modelling · data analysis</div>
+    </div>
+    <div class="card" style="padding:1rem;">
+      <div style="font-size:12px;color:var(--accent3);margin-bottom:6px;font-weight:600;">Professional Skills</div>
+      <div style="font-size:13px;color:var(--muted);">Report writing · client communication · negotiation</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SYSTEM ═══════════════ -->
+<section id="system">
+  <div class="section-label">How I operate</div>
+  <h2 class="sec-h">My Execution System</h2>
+  <p style="color:var(--muted);margin-bottom:2rem;">This is not aspirational. This is the actual structure I run on — every day, every week.</p>
+
+  <div class="section-label">Daily schedule</div>
+  <div class="day-block"><div class="time-badge">05:30 – 06:00</div><div class="day-content"><strong>Wake up + daily plan</strong> — Write today's top 3 priorities. No phone scrolling before this is done.</div></div>
+  <div class="day-block"><div class="time-badge">06:00 – 08:00</div><div class="day-content"><strong>Deep study block 1</strong> — <span class="pill pill-y">FAC1501</span> or <span class="pill pill-b">BNU1501</span> — hardest subject first, sharpest mind of the day.</div></div>
+  <div class="day-block"><div class="time-badge">08:00 – 08:30</div><div class="day-content"><strong>Break + breakfast</strong> — Physical reset. No work. Eat properly.</div></div>
+  <div class="day-block"><div class="time-badge">08:30 – 10:30</div><div class="day-content"><strong>Deep study block 2</strong> — <span class="pill pill-g">CAS1501</span> or <span class="pill pill-p">MNB1501</span></div></div>
+  <div class="day-block"><div class="time-badge">10:30 – 12:00</div><div class="day-content"><strong>TVET logbook</strong> — <span class="pill pill-r">URGENT</span> dedicated block every weekday until logbook is fully complete.</div></div>
+  <div class="day-block"><div class="time-badge">12:00 – 13:00</div><div class="day-content"><strong>Lunch + admin</strong> — Emails, messages, short tasks only. Brain reset.</div></div>
+  <div class="day-block"><div class="time-badge">13:00 – 14:30</div><div class="day-content"><strong>Job search</strong> — Targeted applications, company research, tailored cover letters, and follow-ups.</div></div>
+  <div class="day-block"><div class="time-badge">14:30 – 16:30</div><div class="day-content"><strong>Business work</strong> — Marketplace validation (conversations + research) OR lending business operations.</div></div>
+  <div class="day-block"><div class="time-badge">16:30 – 17:00</div><div class="day-content"><strong>ENG1504 or module review</strong> — Lower cognitive load time slot. Lighter reading or past paper review.</div></div>
+  <div class="day-block"><div class="time-badge">17:00 – 18:00</div><div class="day-content"><strong>Physical activity</strong> — Non-negotiable. Protects mental performance.</div></div>
+  <div class="day-block"><div class="time-badge">18:00 – 19:00</div><div class="day-content"><strong>Evening review</strong> — Did I hit my 3 priorities? What moves to tomorrow? Update task list.</div></div>
+  <div class="day-block"><div class="time-badge">22:00</div><div class="day-content"><strong>Lights out.</strong> Sleep is performance infrastructure. 7–8 hours minimum.</div></div>
+
+  <div class="divider"></div>
+  <div class="section-label">Weekly timetable (hours allocated)</div>
+  <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border);">
+    <table class="timetable">
+      <thead>
+        <tr>
+          <th>Activity</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th><th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>FAC1501</td><td><span class="pill pill-y">2h</span></td><td>—</td><td><span class="pill pill-y">2h</span></td><td>—</td><td><span class="pill pill-y">2h</span></td><td><span class="pill pill-y">2h</span></td><td>—</td><td><strong>8h</strong></td></tr>
+        <tr><td>BNU1501</td><td>—</td><td><span class="pill pill-b">2h</span></td><td>—</td><td><span class="pill pill-b">2h</span></td><td>—</td><td><span class="pill pill-b">1h</span></td><td>—</td><td><strong>5h</strong></td></tr>
+        <tr><td>CAS1501</td><td><span class="pill pill-g">1h</span></td><td>—</td><td><span class="pill pill-g">1h</span></td><td><span class="pill pill-g">2h</span></td><td>—</td><td>—</td><td><span class="pill pill-g">2h</span></td><td><strong>6h</strong></td></tr>
+        <tr><td>MNB1501</td><td>—</td><td><span class="pill pill-p">2h</span></td><td>—</td><td>—</td><td><span class="pill pill-p">2h</span></td><td><span class="pill pill-p">1h</span></td><td>—</td><td><strong>5h</strong></td></tr>
+        <tr><td>ENG1504</td><td><span class="pill pill-b">1h</span></td><td><span class="pill pill-b">1h</span></td><td>—</td><td><span class="pill pill-b">1h</span></td><td><span class="pill pill-b">1h</span></td><td>—</td><td>—</td><td><strong>4h</strong></td></tr>
+        <tr><td>TVET Logbook</td><td><span class="pill pill-r">1.5h</span></td><td><span class="pill pill-r">1.5h</span></td><td><span class="pill pill-r">1.5h</span></td><td><span class="pill pill-r">1.5h</span></td><td><span class="pill pill-r">1.5h</span></td><td>—</td><td>—</td><td><strong>7.5h</strong></td></tr>
+        <tr><td>Job Search</td><td><span class="pill pill-b">1.5h</span></td><td>—</td><td><span class="pill pill-b">1.5h</span></td><td>—</td><td><span class="pill pill-b">1.5h</span></td><td>—</td><td>—</td><td><strong>4.5h</strong></td></tr>
+        <tr><td>Marketplace</td><td>—</td><td><span class="pill pill-g">2h</span></td><td>—</td><td><span class="pill pill-g">2h</span></td><td>—</td><td><span class="pill pill-g">2h</span></td><td><span class="pill pill-g">3h</span></td><td><strong>9h</strong></td></tr>
+        <tr><td>Lending Ops</td><td><span class="pill pill-p">1h</span></td><td>—</td><td><span class="pill pill-p">1h</span></td><td>—</td><td>—</td><td>—</td><td><span class="pill pill-p">1h</span></td><td><strong>3h</strong></td></tr>
+        <tr><td>Weekly Review</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="pill pill-y">1h</span></td><td><strong>1h</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-label">Sunday weekly review (non-negotiable)</div>
+  <ul class="checklist">
+    <li><div class="check-icon check-done">✓</div><div>Review what I completed vs what I planned — no self-deception</div></li>
+    <li><div class="check-icon check-done">✓</div><div>Update progress on each module — ahead or behind on study schedule?</div></li>
+    <li><div class="check-icon check-done">✓</div><div>Check assignment and exam calendar — identify the next 3 critical dates</div></li>
+    <li><div class="check-icon check-done">✓</div><div>Review job applications — any responses? Follow-ups needed?</div></li>
+    <li><div class="check-icon check-done">✓</div><div>Review lending book — any overdue accounts? Any new opportunities?</div></li>
+    <li><div class="check-icon check-done">✓</div><div>Set top 3 priorities for the coming week — write them down</div></li>
+    <li><div class="check-icon check-done">✓</div><div>One marketplace question: what did I learn about customers this week?</div></li>
+  </ul>
+</section>
+
+<!-- ═══════════════ STRATEGY ═══════════════ -->
+<section id="strategy">
+  <div class="section-label">Clear-eyed thinking</div>
+  <h2 class="sec-h">Strategic Guidance</h2>
+  <p style="color:var(--muted);margin-bottom:2rem;">The honest, unfiltered view on what to do, what to ignore, and what mistakes derail ambitious people in exactly this position.</p>
+
+  <div class="focus-grid" style="margin-bottom:2rem;">
+    <div class="focus-card focus-now">
+      <h4>Focus right now</h4>
+      <ul class="focus-list">
+        <li>TVET logbook — finish it this week</li>
+        <li>FAC1501 — most critical module</li>
+        <li>5 job applications per week</li>
+        <li>Marketplace validation conversations</li>
+        <li>Lending ops — clean and documented</li>
+        <li>7–8 hours sleep — non-negotiable</li>
+      </ul>
+    </div>
+    <div class="focus-card focus-later">
+      <h4>Delay until after June</h4>
+      <ul class="focus-list">
+        <li>Building marketplace technology</li>
+        <li>Branding and social media marketing</li>
+        <li>Complex financial models for lending</li>
+        <li>Learning new frameworks or tools</li>
+        <li>Aggressive growth of loan book</li>
+        <li>Networking events during exam season</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-label">Mistakes that kill ambitious people in your position</div>
+
+  <div class="card card-red" style="margin-bottom:0.75rem;">
+    <h3 class="card-h">1. Mistaking motion for progress</h3>
+    <p style="font-size:13px;color:var(--muted);">Being busy is not the same as executing. Every day, ask: did I move my top 3 priorities forward? If not, the day was wasted regardless of how full it felt.</p>
+  </div>
+  <div class="card card-red" style="margin-bottom:0.75rem;">
+    <h3 class="card-h">2. Letting academics slip while building</h3>
+    <p style="font-size:13px;color:var(--muted);">Your degree is your credibility infrastructure. Businesses can pivot. A failed module costs you time, money, and momentum. Academics come first in time allocation — every single week.</p>
+  </div>
+  <div class="card card-red" style="margin-bottom:0.75rem;">
+    <h3 class="card-h">3. Scaling the lending business too fast</h3>
+    <p style="font-size:13px;color:var(--muted);">One bad debt spiral can wipe months of profit and capital. Grow the loan book at 20% per quarter maximum until your credit scoring system is proven. Slow is smooth, smooth is fast.</p>
+  </div>
+  <div class="card card-red" style="margin-bottom:0.75rem;">
+    <h3 class="card-h">4. Building a product before validating demand</h3>
+    <p style="font-size:13px;color:var(--muted);">The marketplace is an idea until 10 real hosts tell you "I would pay for this." Do the validation conversations now. Build nothing until you have proof of genuine demand.</p>
+  </div>
+  <div class="card card-red" style="margin-bottom:1.5rem;">
+    <h3 class="card-h">5. Underestimating the logbook deadline</h3>
+    <p style="font-size:13px;color:var(--muted);">The TVET logbook is urgent and non-negotiable. Missing it has real consequences. Treat it like an exam you haven't started studying for — close it out before anything else this week.</p>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-label">The honest truth</div>
+  <div class="card" style="background:linear-gradient(135deg,rgba(232,197,71,0.04),rgba(79,192,141,0.04));border-color:rgba(232,197,71,0.15);">
+    <p style="font-size:14px;line-height:2;color:var(--text);">
+      You are doing something genuinely hard: studying full-time, running two businesses, job searching, and completing a logbook — all simultaneously. Most people can barely maintain one of these. You're running all four.<br><br>
+      The real risk is <strong style="color:var(--accent)">spreading too thin and excelling at nothing.</strong> The antidote is ruthless prioritization: academics first, logbook second, job search third, businesses fourth — in that order, every single week, until exams are done in June.<br><br>
+      After June, rebalance. Until then — protect your degree. It is the lever that makes everything else possible.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p style="margin-bottom:6px;">Built with intent &nbsp;·&nbsp; Durban, South Africa</p>
+  <p>SMS &nbsp;·&nbsp; Accounting Student &nbsp;·&nbsp; Startup Founder &nbsp;·&nbsp; CA(SA) in progress</p>
+<p><a href="mailto:senemebiyela@outlook.com" style="color:#e8c547;text-decoration:none;">senemebiyela@outlook.com</a></p>
+<p style="color:#8a8a9a;">+27 76 700 8123 &nbsp;·&nbsp; <a href="https://linkedin.com/in/Seluleko MS Ntshangase" style="color:#e8c547;text-decoration:none;">LinkedIn</a></p>
+</footer>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-links button, .mobile-menu button').forEach(b => b.classList.remove('active'));
+  if (btn) {
+    btn.classList.add('active');
+  } else {
+    document.querySelectorAll('.nav-links button, .mobile-menu button').forEach(b => {
+      if (b.textContent.toLowerCase().replace(/\s/g,'') === id.replace(/\s/g,'') ||
+          (id === 'home' && b.textContent === 'Home')) b.classList.add('active');
+    });
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('burger');
+  const open = menu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+}
+
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('burger');
+  if (!menu.contains(e.target) && !burger.contains(e.target)) {
+    menu.classList.remove('open');
+    burger.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>
